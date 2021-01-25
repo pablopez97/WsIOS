@@ -35,6 +35,10 @@ variable = 45;
 //podemos decir el tipo de la variable al mismo tiempo que la declaramos
 
 var variableString : String = "Esto seria una frase"
+var numeroDouble = 70 //este numero si lo declaramos asi seria un entero
+var numeroDouble2 = 70.0 //este numero si que seria un double
+var numeroDouble3 : Double = 70.0 //De esta forma nos aseguramos que la variable va a ser double 100%
+
 
 //una de las ventajas del azucar es que no hace falta poner ";"
 print(maximoNumeroDeIntentos);
@@ -107,3 +111,104 @@ print(tupla1);//Para imprimir la tupla por completo
 //Podemos camnbiar el valor de una tupla
 
 tupla2.2 = 40;
+
+//Podemos crear tuplas con tipos por defecto
+//De esta manera nos aseguramos de que los datos son rellenados correctamente
+var qq : (Int, String, Double) = (1, "Bart", 45.5)
+
+print (qq)
+
+//Algunas operaciones con tuplas
+
+//Pattern Matching
+//Afirmacion de variables muy flexible, donde indicamos el patron al compilador
+//y el compilador se las busca para encajar los valores donde sea posible
+
+//fijemonos en la tupla de homer
+//estamos crando cuatro variables nuevas y swift intenta encajar cada valor de la tupla2 a cada una de las variables nuevas
+var (nombre, apellidos, edad, peso) = tupla2
+
+print(nombre)
+print(apellidos)
+print(edad)
+print(peso)
+
+peso=110
+print(tupla2)
+
+//Para cambiar el peso de la tupla
+
+//estas dos formas serian correctas para poder cambiar los valores de las tuplas
+
+tupla2.3 = peso
+tupla2.3 = 110
+
+//si quereis extraer el valor o valores de una tupla a una o unas variables podemos hacer lo siguiente
+
+var (nombre2,_,edad2,_) = tupla3
+//Hemos creado dos variables y volcamos los datos en estas variables
+
+print(nombre2)
+print(edad2)
+
+//Optionals
+//Utilizaremos OPtionals cuando una variable pueda nop tener valor, es decir, apunte a nulo
+//, en swift nulo se representa por "nil"
+//En una variable normal, que no sea optional no podemos apuntarla a "nil"
+
+//var variableNula : String = nil //ERROR
+
+//Paa crear un optional tenemos varias maneras
+//podemos usar ?
+var variablenula : String?
+variablenula = nil
+variablenula = "Valor de la variable"
+
+//En swift todo es un objeto, por lo que si creamos una variable entera sufre la misma problematica con los optionals
+
+var numeroNulo : Int?
+numeroNulo = 34
+numeroNulo = nil
+var numero4=45;
+
+print(type(of: numeroNulo))
+print(type(of: numero4))
+
+//El concepto de optional esta muy ligado al concepto de "envoltorio" o en ingles de tipo "wrapper".
+//Un objetp de tipo wrapper es un objeto que envuelve a otro
+
+//Podemos tener problemas en cado de que queramos trabajar con variables optionales y variables que no lo sean
+//
+
+
+
+var variableNormal : String = "Hola que tal"
+
+variablenula = variableNormal
+//variableNormal = variablenula no se puede igualar una variable normal a una nula pero una nula a una norma SI
+
+//Como podemos solucionarlo???
+//Tenemos que hacer un "unwrapper" o "Desenvolver la variable optional"
+//poniendo "!" al final de la variable optional
+
+variableNormal = variablenula!
+print(variableNormal)
+
+//OJO con los valores nulos
+
+variablenula = nil
+//variableNormal = variablenula!
+
+//print(variableNormal)
+// no nos dara error pero el programa petaaaaaa
+
+//Podemos hacer que los optionals hagan un "auto-unwrapper"
+
+var variableAutoUnwrapper :String! = "Pepe"//Hacemos una optioanl auto-unwrapper
+variableNormal = variableAutoUnwrapper //ahora no tengo que hacer un wapper especifico
+//lo hace de manera automatica
+
+
+
+
+
